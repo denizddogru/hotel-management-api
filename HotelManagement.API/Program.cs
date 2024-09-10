@@ -1,5 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using HotelManagement.Core.Entity;
+using HotelManagement.Data;
+using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
 
