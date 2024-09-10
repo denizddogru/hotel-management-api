@@ -16,4 +16,9 @@
     <Folder Include="HotelManagement.Core\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\HotelManagement.Service\HotelManagement.Service.csproj" />
+    <ProjectReference Include="..\SharedLibrary\SharedLibrary.csproj" />
+  </ItemGroup>
+
 </Project>
