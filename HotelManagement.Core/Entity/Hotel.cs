@@ -5,8 +5,8 @@ public class Hotel
     public string Name { get; set; }
     public string Address { get; set; }
     public string Description { get; set; }
-    public int StarRating { get; set; }
-    public List<string> Amenities { get; set; }
+    public string StarRating { get; set; }
+    public ICollection<string> Amenities { get; set; }
 
 
 }
