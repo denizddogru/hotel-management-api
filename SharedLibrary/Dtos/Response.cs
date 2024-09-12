@@ -11,7 +11,7 @@ public class Response<T> where T : class
 
     public ErrorDto Error { get; private set; }
 
-    public static Response<T> Succes(T data, int statusCode)
+    public static Response<T> Success(T data, int statusCode)
     {
         return new Response<T>
         {
