@@ -1,5 +1,5 @@
-﻿using HotelManagement.Core.Dtos;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using SharedLibrary.Dtos;
 
 namespace HotelManagement.API.Controllers;
 

@@ -1,7 +1,6 @@
-﻿using SharedLibrary.Dtos;
-using System.Text.Json.Serialization;
+﻿using System.Text.Json.Serialization;
 
-namespace HotelManagement.Core.Dtos;
+namespace SharedLibrary.Dtos;
 public class Response<T> where T : class
 {
     public T Data { get; private set; }

@@ -1,6 +1,5 @@
-﻿using HotelManagement.Core.Dtos;
+﻿using SharedLibrary.Dtos;
 using System.Linq.Expressions;
-using SharedLibrary.Dtos;
 
 namespace HotelManagement.Core.Services;
 public interface IGenericService<TEntity, TDto> where TEntity : class where TDto : class
