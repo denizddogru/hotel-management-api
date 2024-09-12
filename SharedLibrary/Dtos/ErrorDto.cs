@@ -1,10 +1,10 @@
-﻿namespace SharedLibrary;
+﻿namespace SharedLibrary.Dtos;
 public class ErrorDto
 {
     public List<string> Errors { get; private set; } = new List<string>();
-    public bool IsShow {  get; set; }
+    public bool IsShow { get; set; }
 
-    public ErrorDto(string error,  bool isShow)
+    public ErrorDto(string error, bool isShow)
     {
         Errors.Add(error);
         IsShow = isShow;

@@ -1,9 +1,23 @@
-using Microsoft.AspNetCore.Identity;
 using HotelManagement.Core.Entity;
+using HotelManagement.Core.Repositories;
+using HotelManagement.Core.Services;
+using HotelManagement.Core.UnitOfWork;
 using HotelManagement.Data;
+using HotelManagement.Data.Repositories;
+using HotelManagement.Data.UnitOfWork;
+using HotelManagement.Service.Services;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
+
+
+// Scoped Services
+
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
+builder.Services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
 
 // Add services to the container.
 
