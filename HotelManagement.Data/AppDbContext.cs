@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace HotelManagement.Data;
 
-public class AppDbContext : IdentityDbContext<Guest, IdentityRole,string>
+public class AppDbContext : IdentityDbContext<AppUser, IdentityRole,string>
 {
 
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)

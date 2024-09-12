@@ -1,4 +1,4 @@
 ﻿namespace HotelManagement.Core.Dtos;
-public class BookingUpdateDto
+public class UpdateBookingDto
 {
 }

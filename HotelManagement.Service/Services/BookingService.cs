@@ -11,7 +11,7 @@ public class BookingService : IBookingService
         throw new NotImplementedException();
     }
 
-    public Task<Response<Booking>> CreateBookingAsync(BookingCreateDto bookingDto)
+    public Task<Response<Booking>> CreateBookingAsync(CreateBookingDto bookingDto)
     {
         throw new NotImplementedException();
     }
@@ -26,7 +26,7 @@ public class BookingService : IBookingService
         throw new NotImplementedException();
     }
 
-    public Task<Booking> UpdateBookingAsync(int id, BookingUpdateDto bookingDto)
+    public Task<Booking> UpdateBookingAsync(int id, UpdateBookingDto bookingDto)
     {
         throw new NotImplementedException();
     }

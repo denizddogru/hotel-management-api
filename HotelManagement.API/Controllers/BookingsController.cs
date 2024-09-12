@@ -15,7 +15,7 @@ public class BookingsController : CustomBaseController
     }
 
     [HttpPost]
-    public async Task<IActionResult> CreateBooking(BookingCreateDto bookingDto)
+    public async Task<IActionResult> CreateBooking(CreateBookingDto bookingDto)
     {
 
         return ActionResultInstance(await _bookingService.CreateBookingAsync(bookingDto));

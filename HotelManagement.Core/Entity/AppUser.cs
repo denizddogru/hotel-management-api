@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 
 namespace HotelManagement.Core.Entity;
-public class Guest : IdentityUser
+public class AppUser : IdentityUser
 {
-    public string City { get; set; }
+    public string? City { get; set; }
 }

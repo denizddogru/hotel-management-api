@@ -1,5 +1,5 @@
 ﻿namespace HotelManagement.Core.Dtos;
-public class BookingCreateDto
+public class CreateBookingDto
 {
     public int RoomId { get; set; }
     public DateTime CheckInDate { get; set; }

@@ -4,7 +4,7 @@ public class Booking
     public int Id { get; set; }
     public string BookingReference { get; set; }
     public int GuestId { get; set; }
-    public Guest Guest { get; set; }
+    public AppUser Guest { get; set; }
     public int RoomId { get; set; }
     public Room Room { get; set; }
     public DateTime CheckInDate { get; set; }

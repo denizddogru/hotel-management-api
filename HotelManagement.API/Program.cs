@@ -16,13 +16,14 @@ var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IBookingService, BookingService>();
+builder.Services.AddScoped<IUserService, UserService>();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
 
 // Add services to the container.
 
-builder.Services.AddIdentity<Guest, IdentityRole>(opt =>
+builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 {
     opt.User.RequireUniqueEmail = true;
     opt.Password.RequireNonAlphanumeric = false;
