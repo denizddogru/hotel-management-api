@@ -21,7 +21,7 @@ public class UserService : IUserService
     {
         var user = new AppUser { Email = userDto.Email, UserName = userDto.UserName };
 
-        var result = await _userManager.CreateAsync(user, userDto.UserName);
+        var result = await _userManager.CreateAsync(user, userDto.Password);
 
         if (!result.Succeeded)
         {

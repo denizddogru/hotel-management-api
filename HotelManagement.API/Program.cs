@@ -8,6 +8,7 @@ using HotelManagement.Data.UnitOfWork;
 using HotelManagement.Service.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SharedLibrary.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -25,12 +26,16 @@ builder.Services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>)
 
 // Add services to the container.
 
+
+
+// Identity Configuration
 builder.Services.AddIdentity<AppUser, IdentityRole>(opt =>
 {
     opt.User.RequireUniqueEmail = true;
     opt.Password.RequireNonAlphanumeric = false;
 
 }).AddEntityFrameworkStores<AppDbContext>().AddDefaultTokenProviders();
+
 
 builder.Services.AddDbContext<AppDbContext>(options =>
 {
@@ -41,6 +46,7 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         });
 }
 );
+
 
 builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
@@ -56,10 +62,15 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
 }
 
+else
+{
+}
+
+app.UseCustomException();
 app.UseHttpsRedirection();
-
+app.UseAuthentication();
 app.UseAuthorization();
-
+app.UseCustomException();
 app.MapControllers();
 
 app.Run();
