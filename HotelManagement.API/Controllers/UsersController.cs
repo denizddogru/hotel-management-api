@@ -2,7 +2,6 @@
 using HotelManagement.Core.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SharedLibrary.Exceptions;
 
 namespace HotelManagement.API.Controllers;
 
@@ -20,7 +19,7 @@ public class UsersController : CustomBaseController
     [HttpPost]
     public async Task<IActionResult> CreateUser(CreateUserDto createUserDto)
     {
-        throw new CustomException("An error occurred related to the database.");
+        return ActionResultInstance(await _userService.CreateUserAsync(createUserDto));
     }
 
     [Authorize]
