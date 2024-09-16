@@ -7,6 +7,8 @@ public class DtoMapper : Profile
 {
     public DtoMapper()
     {
+        //  AppUserDto nesnesini Product nesnesine dönüştürmek için harita oluşturulur.
+
         CreateMap<AppUserDto, AppUser>().ReverseMap();
     }
 }

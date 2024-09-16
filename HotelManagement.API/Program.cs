@@ -1,3 +1,4 @@
+using HotelManagement.Core.Configuration;
 using HotelManagement.Core.Entity;
 using HotelManagement.Core.Repositories;
 using HotelManagement.Core.Services;
@@ -6,9 +7,12 @@ using HotelManagement.Data;
 using HotelManagement.Data.Repositories;
 using HotelManagement.Data.UnitOfWork;
 using HotelManagement.Service.Services;
+using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SharedLibrary.Configurations;
 using SharedLibrary.Extensions;
+using SharedLibrary.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -23,6 +27,13 @@ builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
 
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
+
+builder.Services.Configure<CustomTokenOptions>(
+           builder.Configuration.GetSection("TokenOptions"));
+
+
+builder.Services.Configure<List<Client>>(
+    builder.Configuration.GetSection("Clients"));
 
 // Add services to the container.
 
@@ -46,6 +57,30 @@ builder.Services.AddDbContext<AppDbContext>(options =>
         });
 }
 );
+
+// Token Configuration
+
+builder.Services.AddAuthentication(options =>
+{
+    options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+    options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+}).AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, opt =>
+{
+    var tokenOptions = builder.Configuration.GetSection("TokenOptions").Get<CustomTokenOptions>();
+
+    opt.TokenValidationParameters = new Microsoft.IdentityModel.Tokens.TokenValidationParameters()
+    {
+        ValidIssuer = tokenOptions.Issuer,
+        ValidAudience = tokenOptions.Audience[0],
+        IssuerSigningKey = SignService.GetSymmetricSecurityKey(tokenOptions.SecurityKey),
+
+        ValidateIssuerSigningKey = true,
+        ValidateAudience = true,
+        ValidateIssuer = true,
+        ValidateLifetime = true,
+        ClockSkew = TimeSpan.Zero
+    };
+});
 
 
 builder.Services.AddControllers();
