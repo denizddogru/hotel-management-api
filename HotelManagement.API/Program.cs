@@ -20,10 +20,19 @@ var builder = WebApplication.CreateBuilder(args);
 // Scoped Services
 
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
+/************************ HOTEL  **************************************/
 builder.Services.AddScoped<IBookingService, BookingService>();
+builder.Services.AddScoped<IHotelService, HotelService>();
+
+/************************ AUTH & TOKEN **************************************/
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<ITokenService, TokenService>();
 builder.Services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+/************************ GENERIC SERVICE &  REPOSITORY **************************************/
+
 
 builder.Services.AddScoped(typeof(IGenericRepository<>),typeof(GenericRepository<>));
 builder.Services.AddScoped(typeof(IGenericService<,>), typeof(GenericService<,>));
@@ -87,6 +96,7 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
+
 
 var app = builder.Build();
 

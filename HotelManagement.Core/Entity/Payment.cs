@@ -5,7 +5,7 @@ public class Payment
     public Booking Booking { get; set; }
     public int BookingId { get; set; }
     public string Amount { get; set; }
-    public string PaymentDate { get; set; }
-    public string PaymentMethod { get; set; }
+    public DateTime PaymentDate { get; set; }
+    public PaymentStatus Status { get; set; }
 
 }
